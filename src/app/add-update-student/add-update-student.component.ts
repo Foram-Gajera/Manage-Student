@@ -45,13 +45,6 @@ export class AddUpdateStudentComponent implements OnInit {
     this.operationservice.getStudentById(id).subscribe(
       (data) => {
           this.student = data[0];
-          // if (this.student.isMale === 'true'){
-          //   this.student.isMale.value = '' ;
-          // }
-          // alert(this.student.isMale);
-          // if (this.student.isMale){
-          //   this.student.isMale.checked = true;
-          // }
           console.log(this.student);
           this.createForm = this.formBuilder.group({
             id: this.student.id,
@@ -73,7 +66,7 @@ export class AddUpdateStudentComponent implements OnInit {
       }
       else{
        if (this.createForm.value.id === 0){
-         alert(this.createForm.value);
+        //  alert(this.createForm.value);
          console.log(this.createForm.value);
          this.operationservice.postStudent(this.createForm.value).subscribe(
           (res: any) => {
@@ -92,7 +85,6 @@ export class AddUpdateStudentComponent implements OnInit {
           console.log(this.createForm.value);
         }
       }
-      this.createForm.reset();
       this.submitted = false;
       this.router.navigateByUrl('/home');
 
