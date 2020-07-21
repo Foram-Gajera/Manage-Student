@@ -1,0 +1,104 @@
+<h2 class="text-center text-info m-4">{{createForm.get('id').value===0 ?'Add':'Update'}} Student</h2>
+
+<div class="p-4 container col-6">
+    <form class="border p-5" [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Name</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control" id="name" type="text" name="name" formControlName="name">
+                <div *ngIf="(submitted || createForm.controls.name.touched) && createForm.controls.name.errors">
+                    <span *ngIf="createForm.controls.name.errors?.required" class="text-danger">Name is Required.</span>
+                    <span *ngIf="createForm.controls.name.errors?.minlength" class="text-danger">Name must be at least 3 characters long.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Email</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control" id="email" type="email" name="email" formControlName="email">
+                <div *ngIf="(submitted || createForm.controls.email.touched) && createForm.controls.email.errors">
+                    <span *ngIf="createForm.controls.email.errors?.required" class="text-danger">Email is Required.</span>
+                    <span *ngIf="createForm.controls.email.errors?.email" class="text-danger">Email is Invalid.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Roll No</label>
+            </div>
+            <div class="col-9">
+                <div class="input-group">
+                    <input class="form-control" id="rollNo" name="rollNo" formControlName="rollNo">
+                </div>
+                <div *ngIf="(submitted || createForm.controls.rollNo.touched) && createForm.controls.rollNo.errors">
+                    <span *ngIf="createForm.controls.rollNo.errors?.required" class="text-danger">Roll No. is Required.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Date</label>
+            </div>
+            <div class="col-9">
+                <div class="input-group">
+                    <input class="form-control" id="date" name="date" type="date" formControlName="date">
+                </div>
+                <div *ngIf="(submitted || createForm.controls.date.touched) && createForm.controls.date.errors">
+                    <span *ngIf="createForm.controls.date.errors?.required" class="text-danger">Date. is Required.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Age</label>
+            </div>
+            <div class="col-9">
+                <div class="input-group">
+                    <input class="form-control" id="age" name="age" type="age" formControlName="age">
+                </div>
+                <div *ngIf="(submitted || createForm.controls.age.touched) && createForm.controls.age.errors">
+                    <span *ngIf="createForm.controls.age.errors?.required" class="text-danger">Age is Required.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label>Select Gender</label>
+            </div>
+            <div class="col-9">
+                <div class="input-group">
+                    <div>
+                        <input id="male" type="radio" value="true" name="isMale" formControlName="isMale">
+                        <label for="male">Male</label>
+                    </div>
+                    &nbsp;
+                    <div>
+                        <input id="female" type="radio" value="false" name="isMale" formControlName="isMale">
+                        <label for="female">Female</label>
+                    </div>
+
+                    <div *ngIf="createForm.controls.isMale.touched && createForm.controls.isMale.invalid" class="alert alert-danger">
+                        <div *ngIf="createForm.controls.isMale.errors.required">Gender is required.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-9">
+                <button type="submit" [disabled]="createForm.invalid" class="btn" ngClass='btn-info'>
+                    {{createForm.get('id').value===0 ?'Add':'Update'}}
+                </button> &nbsp;
+                <button type="button" routerLink="/home" class="btn btn-success">
+                    Back to List
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
